@@ -1,0 +1,6 @@
+IT: Salavat 18 ITMO
+Medical: Karina 20 BGU
+IT: Ural 19 MSU
+Medical: Katerina 22 MIREA
+Medical: George 21 UGATU
+IT: Kirill 18 KFU
