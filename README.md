@@ -6,4 +6,4 @@
 2. Интеграция - код на Python можно запустить из программы на С++ или Java, и наоборот
 3. Язык сценариев (скриптовый) - язык сценариев чётко определяется как серия команд, которые могут выполняться без необходимости компиляции 
 
-Интересные вопросы: https://github.com/funtastt/learning_python/INTERESTING_QUESTIONS.md
+Интересные вопросы: https://github.com/funtastt/learning_python/blob/master/INTERESTING_QUESRIONS.md
