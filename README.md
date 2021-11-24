@@ -7,3 +7,4 @@
 3. Язык сценариев (скриптовый) - язык сценариев чётко определяется как серия команд, которые могут выполняться без необходимости компиляции 
 
 [Интересные вопросы](https://github.com/funtastt/learning_python/blob/master/INTERESTING_QUESRIONS.md)
+[Что такое ...?](https://github.com/funtastt/learning_python/blob/master/INTERESTING_QUESRIONS.md)

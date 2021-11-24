@@ -1,12 +1,14 @@
-x = [1, 2, 3]
-y = [4, x, 5]
-z = [6, x, y]
-y1 = [4, x[:], 5]
-z1 = [6, x[:], y[:]]
-print(z)  # [6, [1, 2, 3], [4, [1, 2, 3], 5]]
+class Object:
+    def __init__(self, name, value):
+        self.name = name
+        self.value = value
 
-x[2] = 10
-print()
-print(z)  # [6, [1, 2, 10], [4, [1, 2, 10], 5]]
-print(z1)  # [6, [1, 2, 3], [4, [1, 2, 10], 5]] - выводится 10, потому что в y сохраняется прямая ссылка на Х, а не копия
-# меняется и Y, и Z
+    def __repr__(self):
+        return str(self.name) + ": " + str(self.value)
+
+
+# Список - массив ссылок на объекты
+test_list = [Object("Name", 32), 3405, "hello"]
+print(test_list)  # Выводит - [<__main__.Object object at 0x00000139E226FFD0>, 3405, 'hello']
+test_list = list(map(str, test_list))
+print(test_list) # Выводит - ['Name: 32', '3405', 'hello']
