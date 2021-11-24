@@ -1,12 +1,12 @@
-import pickle
+x = [1, 2, 3]
+y = [4, x, 5]
+z = [6, x, y]
+y1 = [4, x[:], 5]
+z1 = [6, x[:], y[:]]
+print(z)  # [6, [1, 2, 3], [4, [1, 2, 3], 5]]
 
-test_dict = dict(zip([1, 2, 3], [4, 5, 6]))  # создаст словарь пар "ключ - значение"
-
-# Сериализация
-with open("serialization.pkl", "wb") as input_pickle:
-    pickle.dump(test_dict, input_pickle)
-
-# Десериализация
-with open("serialization.pkl", "rb") as output_pickle:
-    loaded_dict = pickle.load(output_pickle)
-    print(loaded_dict)
+x[2] = 10
+print()
+print(z)  # [6, [1, 2, 10], [4, [1, 2, 10], 5]]
+print(z1)  # [6, [1, 2, 3], [4, [1, 2, 10], 5]] - выводится 10, потому что в y сохраняется прямая ссылка на Х, а не копия
+# меняется и Y, и Z
