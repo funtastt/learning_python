@@ -1,7 +1,12 @@
-test_list = list(zip([1, 2, 3], [4, 5, 6]))  # создаст список пар "ключ - значение"
+import pickle
+
 test_dict = dict(zip([1, 2, 3], [4, 5, 6]))  # создаст словарь пар "ключ - значение"
 
-print(test_list)  # [(1, 4), (2, 5), (3, 6)]
-print(test_dict)  # {1: 4, 2: 5, 3: 6}
+# Сериализация
+with open("serialization.pkl", "wb") as input_pickle:
+    pickle.dump(test_dict, input_pickle)
 
-
+# Десериализация
+with open("serialization.pkl", "rb") as output_pickle:
+    loaded_dict = pickle.load(output_pickle)
+    print(loaded_dict)
