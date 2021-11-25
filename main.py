@@ -1,24 +1,15 @@
-import sys
-sys.setrecursionlimit(1000)
+def parent(parent_value):
+    parent = parent_value
+    def child(child_value):
+        nonlocal parent
+        parent += 1
+        child = child_value
+        return str(parent) + " - " + str(child)
 
-class Object:
-    def __init__(self, a, b, c):
-        self.a = a  # Public
-        self._b = b  # Protected
-        self.__c = c  # Private
-
-    # Getter для protected
-    @property
-    def b(self):
-        return self._b
-
-    # Getter для private - ничем не отличается
-    @property
-    def c(self):
-        return self.__c
+    return child
 
 
-obj = Object(1, 2, 3)
-print(obj.a)
-print(obj.b)
-print(obj.c)
+for i in range(0, 10):
+    F = parent(i)
+    for j in range(0, 10):
+        print(F(j))
