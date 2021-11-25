@@ -1,15 +1,16 @@
-def parent(parent_value):
-    parent = parent_value
-    def child(child_value):
-        nonlocal parent
-        parent += 1
-        child = child_value
-        return str(parent) + " - " + str(child)
+import test
+import importlib
 
-    return child
+test.first = 43534534
+test.second = 123
+test.third = "Hello"
 
+print(test.first)
+print(test.second)
+print(test.third)
 
-for i in range(0, 10):
-    F = parent(i)
-    for j in range(0, 10):
-        print(F(j))
+importlib.reload(test)  # Заново импортирует библиотеку, модуль
+
+print(test.first)
+print(test.second)
+print(test.third)
