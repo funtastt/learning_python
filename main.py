@@ -1,16 +1,15 @@
-import test
-import importlib
+class A:
+    def __init__(self, value):
+        self.value = value
 
-test.first = 43534534
-test.second = 123
-test.third = "Hello"
+    # Throws exception if class doesn't have required key
+    def __setattr__(self, key, value):
+        if key == "value":
+            self.__dict__[key] = value
+        else:
+            raise AttributeError
 
-print(test.first)
-print(test.second)
-print(test.third)
 
-importlib.reload(test)  # Заново импортирует библиотеку, модуль
-
-print(test.first)
-print(test.second)
-print(test.third)
+a = A(1)
+a.value = 23
+a.value2 = 24
