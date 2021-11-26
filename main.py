@@ -1,15 +1,14 @@
-class A:
-    def __init__(self, value):
-        self.value = value
+from functools import reduce
 
-    # Throws exception if class doesn't have required key
-    def __setattr__(self, key, value):
-        if key == "value":
-            self.__dict__[key] = value
-        else:
-            raise AttributeError
+# functools.reduce() - обрабатывает массив и приводит его к одному значению-результату (сумме, строке или др.)
+# lambda - ничего особенного, так же как в Java
 
 
-a = A(1)
-a.value = 23
-a.value2 = 24
+def avg(massive):
+    return reduce(lambda a, b: a + b, massive) / len(massive)
+
+
+mass = [i ** 2 for i in range(0, 5)]
+
+print(mass)
+print(avg(mass))
