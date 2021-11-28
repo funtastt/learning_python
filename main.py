@@ -1,14 +1,27 @@
-from functools import reduce
-
-# functools.reduce() - обрабатывает массив и приводит его к одному значению-результату (сумме, строке или др.)
-# lambda - ничего особенного, так же как в Java
+from random import random
 
 
-def avg(massive):
-    return reduce(lambda a, b: a + b, massive) / len(massive)
+def simple_function_decorator(func):
+    def wrapper(a, b):
+        print("Hello from wrapper, you're launcing a function, called ", func.__name__, "().", sep="")
+        return func(a, b)
+
+    return wrapper
 
 
-mass = [i ** 2 for i in range(0, 5)]
+def iterable_decorator(iters):
+    def actual_decorator(func):
+        def wrapper(a, b):
+            print("Hello from wrapper", iters, sep="")
+            return func(a, b)
 
-print(mass)
-print(avg(mass))
+        return wrapper
+
+    return actual_decorator
+
+
+@iterable_decorator(iters=12)
+def summ(a, b):
+    return random()
+
+print(summ(12, 23))
