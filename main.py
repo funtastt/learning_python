@@ -1,27 +1,31 @@
-from random import random
-
-
-def simple_function_decorator(func):
-    def wrapper(a, b):
-        print("Hello from wrapper, you're launcing a function, called ", func.__name__, "().", sep="")
-        return func(a, b)
+# Function decorator
+def track_exceptions_decorator(func):
+    def wrapper(*args, **kwargs):
+        print("Hello from wrapper!")
+        return func(*args)
 
     return wrapper
 
 
-def iterable_decorator(iters):
-    def actual_decorator(func):
-        def wrapper(a, b):
-            print("Hello from wrapper", iters, sep="")
-            return func(a, b)
+# Class decorator
+def track_exception(cls):
+    callable_attributes = {k: v for k, v in cls.__dict__.items()
+                           if callable(v)}
+    for name, func in callable_attributes.items():
+        decorated = track_exceptions_decorator(func)
+        setattr(cls, name, decorated)
+    return cls
 
-        return wrapper
 
-    return actual_decorator
+@track_exception
+class A:
+    def f1(self):
+        print('1')
+
+    def f2(self):
+        print('2')
 
 
-@iterable_decorator(iters=12)
-def summ(a, b):
-    return random()
-
-print(summ(12, 23))
+a = A()
+a.f1()
+a.f2()
